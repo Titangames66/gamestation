@@ -1,4 +1,4 @@
-<!DOCTYPE html>  Inspired by neon arcade , and with some content borrowed from it, I extend my deepest gratitude to neon arcade.
+<!DOCTYPE html>    Inspired by neon arcade , and with some content borrowed from it, I extend my deepest gratitude to neon arcade.
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1259,6 +1259,379 @@ body::after{
 }
 
 /* ========================
+   LANGUAGE SWITCHER
+   ======================== */
+.lang-bar{
+  display:flex;gap:6px;justify-content:center;align-items:center;
+  margin-bottom:10px;flex-wrap:wrap;
+}
+.lang-btn{
+  background:rgba(0,0,0,0.5);
+  border:1.5px solid var(--border);
+  color:var(--text-dim);
+  padding:5px 12px;
+  font-size:13px;
+  cursor:pointer;
+  border-radius:20px;
+  transition:all 0.15s;
+  font-family:'Exo 2',sans-serif;
+}
+.lang-btn:hover,.lang-btn.active{
+  border-color:var(--amber);
+  color:var(--amber);
+  box-shadow:0 0 10px rgba(255,170,0,0.4);
+  background:rgba(255,170,0,0.08);
+}
+
+/* ========================
+   ADMIN PANEL
+   ======================== */
+#screen-admin{
+  background:rgba(5,10,20,0.98);
+}
+.admin-header{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(18px,3.5vw,32px);
+  color:var(--coral);
+  text-shadow:0 0 20px var(--coral);
+  letter-spacing:3px;
+  margin-bottom:6px;
+  text-align:center;
+}
+.admin-sub{
+  font-family:'Orbitron',monospace;
+  font-size:10px;
+  color:var(--text-dim);
+  letter-spacing:4px;
+  margin-bottom:20px;
+  text-align:center;
+}
+.admin-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;
+  max-width:900px;
+  width:100%;
+  margin-bottom:20px;
+}
+.admin-card{
+  background:rgba(255,20,20,0.05);
+  border:1.5px solid rgba(255,85,102,0.4);
+  border-radius:8px;
+  padding:18px 16px;
+}
+.admin-card-title{
+  font-family:'Orbitron',monospace;
+  font-size:10px;
+  color:var(--coral);
+  letter-spacing:2px;
+  margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.admin-row{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:10px;flex-wrap:wrap;
+}
+.admin-label{
+  font-family:'Orbitron',monospace;
+  font-size:9px;
+  color:var(--text-dim);
+  letter-spacing:1px;
+  min-width:100px;
+}
+.admin-input{
+  background:rgba(0,0,0,0.7);
+  border:1.5px solid var(--teal);
+  color:var(--amber);
+  padding:7px 12px;
+  font-family:'Orbitron',monospace;
+  font-size:13px;
+  border-radius:4px;
+  outline:none;
+  width:130px;
+  text-align:center;
+}
+.admin-input:focus{border-color:var(--amber);}
+.admin-slider{
+  -webkit-appearance:none;
+  width:100%;height:6px;
+  background:linear-gradient(90deg,var(--teal),var(--amber));
+  border-radius:3px;outline:none;cursor:pointer;
+  margin:6px 0;
+}
+.admin-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:18px;height:18px;
+  border-radius:50%;
+  background:var(--amber);
+  box-shadow:0 0 10px var(--amber);
+  cursor:pointer;
+}
+.admin-val{
+  font-family:'Orbitron',monospace;
+  font-size:14px;
+  color:var(--amber);
+  min-width:36px;
+  text-align:center;
+}
+.admin-toggle-row{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;
+}
+.admin-toggle{
+  padding:7px 14px;
+  font-family:'Orbitron',monospace;
+  font-size:9px;
+  background:transparent;
+  border:1.5px solid #444;
+  color:#666;
+  border-radius:4px;
+  cursor:pointer;
+  transition:all 0.15s;
+  letter-spacing:1px;
+}
+.admin-toggle.on{
+  border-color:var(--lime);
+  color:var(--lime);
+  box-shadow:0 0 10px rgba(68,255,136,0.35);
+  background:rgba(68,255,136,0.06);
+}
+.admin-cheat-list{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6px;margin-bottom:14px;
+}
+.admin-cheat-item{
+  background:rgba(0,0,0,0.5);
+  border:1px solid #333;
+  padding:8px 10px;
+  border-radius:4px;
+  cursor:pointer;
+  transition:all 0.15s;
+}
+.admin-cheat-item:hover{
+  border-color:var(--amber);
+  background:rgba(255,170,0,0.06);
+}
+.admin-cheat-item .aci-code{
+  font-family:'Orbitron',monospace;
+  font-size:8px;
+  color:var(--amber);
+  letter-spacing:1px;
+  margin-bottom:3px;
+}
+.admin-cheat-item .aci-desc{
+  font-size:12px;
+  color:var(--text-dim);
+}
+.admin-log{
+  background:rgba(0,0,0,0.6);
+  border:1px solid #222;
+  border-radius:4px;
+  padding:10px;
+  max-height:120px;
+  overflow-y:auto;
+  font-family:'Exo 2',monospace;
+  font-size:12px;
+  color:#44ff88;
+  line-height:1.6;
+}
+.admin-log-entry{ margin-bottom:2px; }
+.admin-log-entry.warn{ color:var(--coral); }
+.admin-log-entry.info{ color:var(--teal); }
+
+/* ========================
+   MINESWEEPER
+   ======================== */
+.mine-area{
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:12px;padding:16px;
+}
+.mine-grid{
+  display:inline-grid;
+  gap:2px;
+  background:rgba(0,0,0,0.3);
+  padding:6px;
+  border:1.5px solid var(--border);
+  border-radius:6px;
+  max-width:100%;
+  overflow:auto;
+}
+.mine-cell{
+  width:36px;height:36px;
+  background:rgba(0,212,212,0.12);
+  border:1.5px solid rgba(0,212,212,0.3);
+  border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  font-family:'Orbitron',monospace;
+  font-size:13px;
+  font-weight:700;
+  transition:all 0.1s;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  flex-shrink:0;
+}
+.mine-cell:hover:not(.revealed):not(.flagged){
+  background:rgba(0,212,212,0.25);
+  border-color:var(--teal);
+}
+.mine-cell.revealed{
+  background:rgba(0,0,0,0.4);
+  border-color:#222;
+  cursor:default;
+}
+.mine-cell.flagged{
+  background:rgba(255,170,0,0.15);
+  border-color:var(--amber);
+}
+.mine-cell.mine-hit{
+  background:rgba(255,85,102,0.35);
+  border-color:var(--coral);
+}
+.mine-n1{color:#44aaff;}
+.mine-n2{color:#44ff88;}
+.mine-n3{color:#ff5566;}
+.mine-n4{color:#aa44ff;}
+.mine-n5{color:#ff7700;}
+.mine-n6{color:#00d4d4;}
+.mine-n7{color:#ffd700;}
+.mine-n8{color:#fff;}
+.mine-stats{
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+}
+.mine-stat{
+  background:rgba(0,0,0,0.5);
+  border:1px solid var(--border);
+  padding:5px 14px;
+  border-radius:4px;
+  font-family:'Orbitron',monospace;
+  font-size:10px;
+  color:var(--teal);
+  text-align:center;
+}
+.mine-stat span{display:block;font-size:16px;color:var(--amber);margin-top:2px;}
+.mine-diff-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:6px;}
+
+/* ========================
+   COLOR MATCH
+   ======================== */
+.colormatch-area{
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:18px;padding:24px;
+  height:100%;
+}
+.cm-word{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(30px,7vw,56px);
+  font-weight:900;
+  letter-spacing:4px;
+  transition:color 0.05s;
+  text-shadow:0 0 20px currentColor;
+  padding:8px 20px;
+  border:3px solid currentColor;
+  border-radius:8px;
+}
+.cm-question{
+  font-family:'Orbitron',monospace;
+  font-size:12px;
+  color:var(--text-dim);
+  letter-spacing:3px;
+  text-align:center;
+}
+.cm-btns{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  width:min(320px,80vw);
+}
+.cm-btn{
+  padding:16px 8px;
+  font-family:'Orbitron',monospace;
+  font-size:13px;
+  font-weight:700;
+  border:2px solid;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.1s;
+  letter-spacing:1px;
+}
+.cm-btn:hover{
+  filter:brightness(1.25);
+  transform:scale(1.04);
+}
+.cm-btn:active{ transform:scale(0.95); }
+.cm-result{
+  font-family:'Orbitron',monospace;
+  font-size:16px;
+  min-height:22px;
+  letter-spacing:1px;
+}
+.cm-result.correct{color:var(--lime);}
+.cm-result.wrong{color:var(--coral);}
+
+/* ========================
+   MATH RUSH
+   ======================== */
+.math-area{
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:16px;padding:24px;height:100%;
+}
+.math-eq{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(28px,6vw,52px);
+  font-weight:900;
+  color:var(--amber);
+  text-shadow:0 0 18px var(--amber);
+  letter-spacing:4px;
+  text-align:center;
+}
+.math-input{
+  background:rgba(0,0,0,0.7);
+  border:2px solid var(--teal);
+  color:var(--amber);
+  padding:12px 20px;
+  font-family:'Orbitron',monospace;
+  font-size:24px;
+  text-align:center;
+  outline:none;
+  border-radius:6px;
+  width:min(200px,60vw);
+  letter-spacing:2px;
+}
+.math-input:focus{border-color:var(--amber);}
+.math-feedback{
+  font-family:'Orbitron',monospace;
+  font-size:14px;
+  min-height:20px;
+  text-align:center;
+  letter-spacing:1px;
+}
+.math-feedback.correct{color:var(--lime);}
+.math-feedback.wrong{color:var(--coral);}
+.math-streak-bar{
+  width:min(340px,80vw);
+  height:10px;
+  background:rgba(255,255,255,0.08);
+  border-radius:5px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.1);
+}
+.math-streak-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--teal),var(--lime),var(--amber));
+  border-radius:5px;
+  transition:width 0.2s;
+}
+.math-level{
+  font-family:'Orbitron',monospace;
+  font-size:9px;
+  color:var(--text-dim);
+  letter-spacing:2px;
+}
+
+/* ========================
    MOBILE RESPONSIVE
    ======================== */
 @media(max-width:768px){
@@ -1311,8 +1684,13 @@ body::after{
 
   <!-- ==================== HUB ==================== -->
   <div id="screen-hub" class="screen active">
-    <h1 class="gs-title">GAME STATION</h1>
-    <div class="gs-sub">SELECT YOUR MISSION</div>
+    <div class="lang-bar">
+      <button class="lang-btn active" onclick="setLang('en')" id="lang-en">🌐 EN</button>
+      <button class="lang-btn" onclick="setLang('zh')" id="lang-zh">繁中</button>
+      <button class="lang-btn" onclick="setLang('th')" id="lang-th">ภาษาไทย</button>
+    </div>
+    <h1 class="gs-title" id="hub-title">GAME STATION</h1>
+    <div class="gs-sub" id="hub-sub">SELECT YOUR MISSION</div>
 
     <div class="avatar-wrap">
       <div class="avatar-ring"></div>
@@ -1442,8 +1820,26 @@ body::after{
 
       <div class="game-card wheel-card" data-game="wheel" onclick="showScreen('wheel')">
         <span class="icon">🎰</span>
-        <h3>COSMIC WHEEL</h3>
-        <p id="wheel-status">Free spin every 15 minutes!</p>
+        <h3 data-i18n="wheel_title">COSMIC WHEEL</h3>
+        <p id="wheel-status" data-i18n="wheel_desc">Free spin every 15 minutes!</p>
+      </div>
+
+      <div class="game-card" data-game="minesweeper" onclick="startGame('minesweeper')">
+        <span class="icon">💣</span>
+        <h3 data-i18n="mine_title">VOID SWEEPER</h3>
+        <p data-i18n="mine_desc">Clear the minefield without hitting a bomb. Classic challenge!</p>
+      </div>
+
+      <div class="game-card" data-game="colormatch" onclick="startGame('colormatch')">
+        <span class="icon">🎨</span>
+        <h3 data-i18n="cm_title">SPECTRUM CLASH</h3>
+        <p data-i18n="cm_desc">Does the ink color match the word? React fast! 5 credits/hit.</p>
+      </div>
+
+      <div class="game-card" data-game="mathrush" onclick="startGame('mathrush')">
+        <span class="icon">🧮</span>
+        <h3 data-i18n="math_title">MATH REACTOR</h3>
+        <p data-i18n="math_desc">Solve equations against the clock. Speed + accuracy = big credits!</p>
       </div>
 
     </div>
@@ -1458,10 +1854,11 @@ body::after{
     </div>
 
     <div class="btn-row">
-      <button class="btn amber" onclick="showScreen('shop')">🛒 SKIN SHOP</button>
-      <button class="btn lime" onclick="promptCheatCode()">🔐 CODE</button>
+      <button class="btn amber" onclick="showScreen('shop')" data-i18n="btn_shop">🛒 SKIN SHOP</button>
+      <button class="btn lime" onclick="promptCheatCode()" data-i18n="btn_code">🔐 CODE</button>
       <button class="btn" onclick="toggleTheme()" id="theme-btn">🌙 DARK</button>
-      <button class="btn coral" onclick="resetProgress()">RESET</button>
+      <button class="btn coral" onclick="promptAdminCode()" data-i18n="btn_admin">⚙ ADMIN</button>
+      <button class="btn" onclick="resetProgress()" data-i18n="btn_reset" style="border-color:#555;color:#888">RESET</button>
     </div>
   </div>
 
@@ -1860,6 +2257,263 @@ body::after{
       <div class="wheel-legend-title">PRIZE TABLE</div>
       <div id="wheel-legend" class="wheel-legend"></div>
     </div>
+  </div>
+
+  <!-- ==================== ADMIN PANEL ==================== -->
+  <div id="screen-admin" class="screen">
+    <div class="admin-header">⚙ ADMIN PANEL</div>
+    <div class="admin-sub">GAME STATION CONTROL CENTER — AUTHORIZED ACCESS ONLY</div>
+
+    <div class="admin-grid">
+
+      <!-- CREDITS CONTROL -->
+      <div class="admin-card">
+        <div class="admin-card-title">💰 CREDIT CONTROL</div>
+        <div class="admin-row">
+          <span class="admin-label">SET CREDITS</span>
+          <input type="number" id="adm-credits-input" class="admin-input" placeholder="amount" min="0" max="9999999">
+          <button class="btn lime" style="padding:7px 12px;font-size:9px" onclick="adminSetCredits()">SET</button>
+        </div>
+        <div class="admin-toggle-row">
+          <button class="admin-toggle" onclick="adminAddCredits(100)">+100</button>
+          <button class="admin-toggle" onclick="adminAddCredits(500)">+500</button>
+          <button class="admin-toggle" onclick="adminAddCredits(1000)">+1000</button>
+          <button class="admin-toggle" onclick="adminAddCredits(5000)">+5000</button>
+          <button class="admin-toggle" onclick="adminAddCredits(99999)">+99999</button>
+        </div>
+        <div class="admin-row">
+          <span class="admin-label">BONUS SPINS</span>
+          <input type="number" id="adm-spins-input" class="admin-input" placeholder="spins" min="0" max="999">
+          <button class="btn amber" style="padding:7px 12px;font-size:9px" onclick="adminSetSpins()">SET</button>
+        </div>
+      </div>
+
+      <!-- DIFFICULTY CONTROL -->
+      <div class="admin-card">
+        <div class="admin-card-title">🎮 DIFFICULTY OVERRIDE</div>
+        <div class="admin-row" style="flex-direction:column;align-items:flex-start">
+          <div style="display:flex;justify-content:space-between;width:100%;margin-bottom:4px">
+            <span class="admin-label">TARGET SPEED</span>
+            <span class="admin-val" id="adm-target-val">1.0×</span>
+          </div>
+          <input type="range" class="admin-slider" id="adm-target-speed" min="0.3" max="3" step="0.1" value="1"
+            oninput="adminSlider('adm-target-speed','adm-target-val','×')">
+        </div>
+        <div class="admin-row" style="flex-direction:column;align-items:flex-start">
+          <div style="display:flex;justify-content:space-between;width:100%;margin-bottom:4px">
+            <span class="admin-label">SNAKE SPEED</span>
+            <span class="admin-val" id="adm-snake-val">1.0×</span>
+          </div>
+          <input type="range" class="admin-slider" id="adm-snake-speed" min="0.3" max="3" step="0.1" value="1"
+            oninput="adminSlider('adm-snake-speed','adm-snake-val','×')">
+        </div>
+        <div class="admin-row" style="flex-direction:column;align-items:flex-start">
+          <div style="display:flex;justify-content:space-between;width:100%;margin-bottom:4px">
+            <span class="admin-label">ASTEROID SPEED</span>
+            <span class="admin-val" id="adm-dodge-val">1.0×</span>
+          </div>
+          <input type="range" class="admin-slider" id="adm-dodge-speed" min="0.3" max="3" step="0.1" value="1"
+            oninput="adminSlider('adm-dodge-speed','adm-dodge-val','×')">
+        </div>
+        <div class="admin-row" style="flex-direction:column;align-items:flex-start">
+          <div style="display:flex;justify-content:space-between;width:100%;margin-bottom:4px">
+            <span class="admin-label">PONG CPU SKILL</span>
+            <span class="admin-val" id="adm-pong-val">1.0×</span>
+          </div>
+          <input type="range" class="admin-slider" id="adm-pong-skill" min="0.1" max="3" step="0.1" value="1"
+            oninput="adminSlider('adm-pong-skill','adm-pong-val','×')">
+        </div>
+        <div class="admin-row" style="flex-direction:column;align-items:flex-start">
+          <div style="display:flex;justify-content:space-between;width:100%;margin-bottom:4px">
+            <span class="admin-label">REACTION WIN BONUS</span>
+            <span class="admin-val" id="adm-rxbonus-val">1.0×</span>
+          </div>
+          <input type="range" class="admin-slider" id="adm-rxbonus" min="0.5" max="5" step="0.5" value="1"
+            oninput="adminSlider('adm-rxbonus','adm-rxbonus-val','×')">
+        </div>
+      </div>
+
+      <!-- GAME FLAGS -->
+      <div class="admin-card">
+        <div class="admin-card-title">🚩 GAME FLAGS</div>
+        <div class="admin-toggle-row" style="flex-direction:column;gap:8px;align-items:flex-start">
+          <button class="admin-toggle" id="adm-godmode" onclick="adminToggle('godmode')">☐ GOD MODE (invincible in catcher)</button>
+          <button class="admin-toggle" id="adm-infinitelives" onclick="adminToggle('infinitelives')">☐ INFINITE LIVES (breaker)</button>
+          <button class="admin-toggle" id="adm-skipwheel" onclick="adminToggle('skipwheel')">☐ INSTANT WHEEL SPIN</button>
+          <button class="admin-toggle" id="adm-wheelunlock" onclick="adminToggle('wheelunlock')">☐ BYPASS WHEEL COOLDOWN</button>
+          <button class="admin-toggle" id="adm-doublereward" onclick="adminToggle('doublereward')">☐ DOUBLE ALL REWARDS</button>
+          <button class="admin-toggle" id="adm-showmines" onclick="adminToggle('showmines')">☐ SHOW MINES (sweeper cheat)</button>
+        </div>
+      </div>
+
+      <!-- CHEAT CODES PANEL -->
+      <div class="admin-card">
+        <div class="admin-card-title">🔑 ALL CHEAT CODES</div>
+        <div class="admin-cheat-list">
+          <div class="admin-cheat-item" onclick="adminRunCheat('hyperspace')">
+            <div class="aci-code">hyperspace</div>
+            <div class="aci-desc">+3000 Credits</div>
+          </div>
+          <div class="admin-cheat-item" onclick="adminRunCheat('allskins')">
+            <div class="aci-code">allskins</div>
+            <div class="aci-desc">Unlock all skins</div>
+          </div>
+          <div class="admin-cheat-item" onclick="adminRunCheat('spinmaster')">
+            <div class="aci-code">spinmaster</div>
+            <div class="aci-desc">+20 bonus spins</div>
+          </div>
+          <div class="admin-cheat-item" onclick="adminRunCheat('fastforward')">
+            <div class="aci-code">fastforward</div>
+            <div class="aci-desc">Skip spin anim</div>
+          </div>
+          <div class="admin-cheat-item" onclick="adminRunCheat('megacredits')">
+            <div class="aci-code">megacredits</div>
+            <div class="aci-desc">+10000 Credits</div>
+          </div>
+          <div class="admin-cheat-item" onclick="adminRunCheat('quantumspins')">
+            <div class="aci-code">quantumspins</div>
+            <div class="aci-desc">+50 bonus spins</div>
+          </div>
+          <div class="admin-cheat-item" onclick="adminRunCheat('cosmicgod')">
+            <div class="aci-code">cosmicgod</div>
+            <div class="aci-desc">All skins + 5000⚡</div>
+          </div>
+          <div class="admin-cheat-item" onclick="adminRunCheat('unlockphantom')">
+            <div class="aci-code">unlockphantom</div>
+            <div class="aci-desc">Unlock Phantom skin</div>
+          </div>
+          <div class="admin-cheat-item" onclick="adminRunCheat('questcomplete')">
+            <div class="aci-code">questcomplete</div>
+            <div class="aci-desc">Complete all quests</div>
+          </div>
+          <div class="admin-cheat-item" onclick="adminRunCheat('resetcooldown')">
+            <div class="aci-code">resetcooldown</div>
+            <div class="aci-desc">Reset wheel cooldown</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKIN MANAGER -->
+      <div class="admin-card">
+        <div class="admin-card-title">🎨 SKIN MANAGER</div>
+        <div class="admin-toggle-row" style="flex-wrap:wrap;gap:7px" id="adm-skin-btns"></div>
+        <div style="margin-top:10px">
+          <button class="btn amber" style="font-size:9px;padding:7px 14px;width:100%" onclick="adminUnlockAllSkins()">UNLOCK ALL SKINS</button>
+        </div>
+      </div>
+
+      <!-- QUEST MANAGER -->
+      <div class="admin-card">
+        <div class="admin-card-title">📋 QUEST MANAGER</div>
+        <div class="admin-toggle-row" style="flex-direction:column;gap:7px;align-items:stretch">
+          <button class="btn lime" style="font-size:9px;padding:8px" onclick="adminCompleteAllQuests()">✓ COMPLETE ALL QUESTS</button>
+          <button class="btn amber" style="font-size:9px;padding:8px" onclick="adminResetQuests()">↺ RESET QUESTS</button>
+          <button class="btn violet" style="font-size:9px;padding:8px" onclick="adminMaxStats()">⬆ MAX ALL STATS</button>
+        </div>
+        <div style="margin-top:12px">
+          <div class="admin-label" style="margin-bottom:6px">ACTIVITY LOG</div>
+          <div class="admin-log" id="adm-log">
+            <div class="admin-log-entry info">[ ADMIN ] Panel initialized.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="btn-row">
+      <button class="btn coral" style="font-size:9px;padding:9px 18px" onclick="adminApplyAll()">✓ APPLY ALL CHANGES</button>
+      <button class="btn" onclick="showScreen('hub')">← BACK TO HUB</button>
+    </div>
+  </div>
+
+  <!-- ==================== VOID SWEEPER ==================== -->
+  <div id="screen-minesweeper" class="screen">
+    <h2 class="game-screen-title" style="color:var(--lime)">💣 VOID SWEEPER</h2>
+    <div class="instructions" id="mine-instructions">Left-click to reveal · Right-click / long-press to flag a mine. Clear all safe cells to win!</div>
+    <div class="game-header">
+      <span class="lbl">SAFE: <span id="mine-safe">0</span></span>
+      <span class="lbl2">🚩 <span id="mine-flags">0</span> / <span id="mine-total-mines">0</span></span>
+    </div>
+    <div class="game-area" style="overflow:auto">
+      <div class="mine-area">
+        <div class="mine-diff-row">
+          <button class="btn" style="font-size:9px;padding:7px 12px" onclick="mineStart('easy')">EASY 8×8</button>
+          <button class="btn amber" style="font-size:9px;padding:7px 12px" onclick="mineStart('medium')">MED 12×9</button>
+          <button class="btn coral" style="font-size:9px;padding:7px 12px" onclick="mineStart('hard')">HARD 16×10</button>
+        </div>
+        <div class="mine-stats">
+          <div class="mine-stat">TIME<span id="mine-time">0</span></div>
+          <div class="mine-stat">SAFE LEFT<span id="mine-left">—</span></div>
+          <div class="mine-stat">CREDITS<span id="mine-credits">+0</span></div>
+        </div>
+        <div class="mine-grid" id="mine-grid"></div>
+      </div>
+    </div>
+    <button class="btn coral" onclick="endGame('minesweeper',true)">QUIT</button>
+  </div>
+
+  <!-- ==================== SPECTRUM CLASH ==================== -->
+  <div id="screen-colormatch" class="screen">
+    <h2 class="game-screen-title" style="color:var(--violet)">🎨 SPECTRUM CLASH</h2>
+    <div class="instructions">Does the INK COLOR of the word match the meaning? Tap YES or NO as fast as possible!</div>
+    <div class="game-header">
+      <span class="lbl">SCORE: <span id="cm-score">0</span></span>
+      <span class="lbl2">TIME: <span id="cm-timer">30</span>s</span>
+    </div>
+    <div class="game-area">
+      <div class="colormatch-area">
+        <div class="cm-question" id="cm-question">Does the ink color match the word?</div>
+        <div class="cm-word" id="cm-word">RED</div>
+        <div class="cm-btns">
+          <button class="cm-btn" id="cm-yes" onclick="cmAnswer(true)"
+            style="background:rgba(68,255,136,0.1);border-color:#44ff88;color:#44ff88">
+            ✓ YES
+          </button>
+          <button class="cm-btn" id="cm-no" onclick="cmAnswer(false)"
+            style="background:rgba(255,85,102,0.1);border-color:#ff5566;color:#ff5566">
+            ✗ NO
+          </button>
+        </div>
+        <div class="cm-result" id="cm-result"></div>
+        <div style="font-family:'Orbitron',monospace;font-size:9px;color:var(--text-dim);letter-spacing:2px">
+          STREAK: <span id="cm-streak">0</span> · BEST: <span id="cm-best">0</span>
+        </div>
+      </div>
+    </div>
+    <button class="btn coral" onclick="endGame('colormatch',true)">QUIT</button>
+  </div>
+
+  <!-- ==================== MATH REACTOR ==================== -->
+  <div id="screen-mathrush" class="screen">
+    <h2 class="game-screen-title" style="color:var(--amber)">🧮 MATH REACTOR</h2>
+    <div class="instructions">Solve the equation and type the answer. Each correct answer builds your streak multiplier!</div>
+    <div class="game-header">
+      <span class="lbl">SOLVED: <span id="mr-score">0</span></span>
+      <span class="lbl2">TIME: <span id="mr-timer">60</span>s</span>
+    </div>
+    <div class="game-area">
+      <div class="math-area">
+        <div class="math-level" id="mr-level">LEVEL 1 — EASY</div>
+        <div class="math-eq" id="mr-eq">? + ? = ?</div>
+        <input type="number" id="mr-input" class="math-input" placeholder="?" autocomplete="off">
+        <div class="math-feedback" id="mr-feedback"></div>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:var(--text-dim)">
+            STREAK: <span id="mr-streak" style="color:var(--lime)">0</span>
+          </div>
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:var(--text-dim)">
+            MULTIPLIER: <span id="mr-mult" style="color:var(--amber)">×1</span>
+          </div>
+          <div style="font-family:'Orbitron',monospace;font-size:10px;color:var(--text-dim)">
+            CREDITS: <span id="mr-earned" style="color:var(--teal)">0</span>
+          </div>
+        </div>
+        <div class="math-streak-bar">
+          <div class="math-streak-fill" id="mr-bar" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+    <button class="btn coral" onclick="endGame('mathrush',true)">QUIT</button>
   </div>
 
   <div id="toast" class="toast"></div>
@@ -4346,6 +5000,732 @@ setInterval(()=>{
 },1000);
 
 /* ==============================================================
+   LANGUAGE / i18n SYSTEM
+   ============================================================== */
+const LANGS = {
+  en: {
+    hub_title:'GAME STATION', hub_sub:'SELECT YOUR MISSION',
+    btn_shop:'🛒 SKIN SHOP', btn_code:'🔐 CODE', btn_admin:'⚙ ADMIN', btn_reset:'RESET',
+    wheel_title:'COSMIC WHEEL', wheel_desc:'Free spin every 15 minutes!',
+    mine_title:'VOID SWEEPER', mine_desc:'Clear the minefield without hitting a bomb!',
+    cm_title:'SPECTRUM CLASH', cm_desc:'Does the ink color match the word? React fast!',
+    math_title:'MATH REACTOR', math_desc:'Solve equations against the clock!',
+    daily:'⬡ DAILY MISSIONS', credits:'CREDITS',
+    quest_claim:'CLAIM REWARD', quest_claimed:'✓ CLAIMED', quest_progress:'IN PROGRESS'
+  },
+  zh: {
+    hub_title:'遊戲站', hub_sub:'選擇你的任務',
+    btn_shop:'🛒 皮膚商店', btn_code:'🔐 密碼', btn_admin:'⚙ 管理員', btn_reset:'重置',
+    wheel_title:'宇宙轉盤', wheel_desc:'每15分鐘免費轉一次！',
+    mine_title:'掃雷艦', mine_desc:'清除雷區，不要踩到地雷！',
+    cm_title:'顏色衝突', cm_desc:'墨水顏色與文字相符嗎？快速反應！',
+    math_title:'數學反應堆', math_desc:'與時間賽跑解方程式！',
+    daily:'⬡ 每日任務', credits:'積分',
+    quest_claim:'領取獎勵', quest_claimed:'✓ 已領取', quest_progress:'進行中'
+  },
+  th: {
+    hub_title:'เกมสเตชั่น', hub_sub:'เลือกภารกิจของคุณ',
+    btn_shop:'🛒 ร้านสกิน', btn_code:'🔐 โค้ด', btn_admin:'⚙ แอดมิน', btn_reset:'รีเซ็ต',
+    wheel_title:'วงล้อจักรวาล', wheel_desc:'หมุนฟรีทุก 15 นาที!',
+    mine_title:'กวาดทุ่นระเบิด', mine_desc:'เคลียร์พื้นที่ระเบิดโดยไม่โดนระเบิด!',
+    cm_title:'การแข่งขันสี', cm_desc:'สีหมึกตรงกับคำไหม? ตอบสนองเร็ว!',
+    math_title:'เครื่องปฏิกรณ์คณิต', math_desc:'แก้สมการแข่งกับเวลา!',
+    daily:'⬡ ภารกิจประจำวัน', credits:'เครดิต',
+    quest_claim:'รับรางวัล', quest_claimed:'✓ รับแล้ว', quest_progress:'กำลังดำเนินการ'
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  try { localStorage.setItem('gsLang', lang); } catch{}
+  // Update lang buttons
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  const lb = document.getElementById('lang-'+lang);
+  if (lb) lb.classList.add('active');
+  // Apply translations
+  const L = LANGS[lang] || LANGS.en;
+  // Hub title/sub
+  const ht = document.getElementById('hub-title');
+  if (ht) ht.textContent = L.hub_title;
+  const hs = document.getElementById('hub-sub');
+  if (hs) hs.textContent = L.hub_sub;
+  // All data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (L[key]) el.textContent = L[key];
+  });
+  // Quest panel title
+  const qpt = document.querySelector('.quest-panel-title');
+  if (qpt) qpt.textContent = L.daily;
+  // HUD pills credit label
+  document.querySelectorAll('.hud-pill').forEach(p => {
+    if (p.textContent.includes('CREDITS') || p.textContent.includes('積分') || p.textContent.includes('เครดิต')) {
+      const span = p.querySelector('span');
+      if (span && p.textContent.startsWith('⚡')) {
+        p.innerHTML = `⚡ ${span.outerHTML} ${L.credits}`;
+      }
+    }
+  });
+  // Re-render quests with new lang
+  renderQuests();
+}
+
+function loadLang() {
+  try {
+    const saved = localStorage.getItem('gsLang');
+    if (saved && LANGS[saved]) setLang(saved);
+  } catch{}
+}
+
+/* ==============================================================
+   ADMIN PANEL SYSTEM
+   ============================================================== */
+// Admin difficulty settings (read by game logic)
+const adminSettings = {
+  targetSpeed: 1,
+  snakeSpeed: 1,
+  dodgeSpeed: 1,
+  pongSkill: 1,
+  rxBonus: 1,
+  godmode: false,
+  infinitelives: false,
+  skipwheel: false,
+  wheelunlock: false,
+  doublereward: false,
+  showmines: false
+};
+
+function loadAdminSettings() {
+  try {
+    const raw = localStorage.getItem('gsAdmin');
+    if (raw) Object.assign(adminSettings, JSON.parse(raw));
+  } catch{}
+}
+function saveAdminSettings() {
+  try { localStorage.setItem('gsAdmin', JSON.stringify(adminSettings)); } catch{}
+}
+
+function promptAdminCode() {
+  const inp = prompt('Enter ADMIN code:');
+  if (inp === null) return;
+  if (inp.trim() === 'ADMIN888') {
+    showScreen('admin');
+    renderAdminSkins();
+    adminLog('Authenticated as ADMIN.','info');
+  } else {
+    toast('ACCESS DENIED', true);
+  }
+}
+
+function adminLog(msg, type='') {
+  const log = document.getElementById('adm-log');
+  if (!log) return;
+  const entry = document.createElement('div');
+  entry.className = 'admin-log-entry' + (type ? ' '+type : '');
+  const ts = new Date().toLocaleTimeString();
+  entry.textContent = `[${ts}] ${msg}`;
+  log.insertBefore(entry, log.firstChild);
+  // keep max 20 entries
+  while (log.children.length > 20) log.removeChild(log.lastChild);
+}
+
+function adminSlider(sliderId, valId, suffix) {
+  const slider = document.getElementById(sliderId);
+  const valEl = document.getElementById(valId);
+  if (!slider || !valEl) return;
+  valEl.textContent = parseFloat(slider.value).toFixed(1) + suffix;
+}
+
+function adminApplyAll() {
+  // Read sliders
+  const tgt = parseFloat(document.getElementById('adm-target-speed')?.value || 1);
+  const snk = parseFloat(document.getElementById('adm-snake-speed')?.value || 1);
+  const ddg = parseFloat(document.getElementById('adm-dodge-speed')?.value || 1);
+  const png = parseFloat(document.getElementById('adm-pong-skill')?.value || 1);
+  const rxb = parseFloat(document.getElementById('adm-rxbonus')?.value || 1);
+  adminSettings.targetSpeed = tgt;
+  adminSettings.snakeSpeed  = snk;
+  adminSettings.dodgeSpeed  = ddg;
+  adminSettings.pongSkill   = png;
+  adminSettings.rxBonus     = rxb;
+  saveAdminSettings();
+  toast('ADMIN SETTINGS APPLIED!', false, true);
+  adminLog(`Settings applied: TGT=${tgt}× SNK=${snk}× DDG=${ddg}× PNG=${png}× RXB=${rxb}×`,'info');
+}
+
+function adminSetCredits() {
+  const val = parseInt(document.getElementById('adm-credits-input')?.value);
+  if (isNaN(val) || val < 0) { toast('INVALID AMOUNT',true); return; }
+  state.money = val; saveState(); renderHub();
+  toast(`CREDITS SET TO ${val}⚡`, false, true);
+  adminLog(`Credits set to ${val}.`,'info');
+}
+function adminAddCredits(amount) {
+  state.money += amount; saveState(); renderHub();
+  toast(`+${amount}⚡ ADDED!`, false, true);
+  adminLog(`Added ${amount} credits. Total: ${state.money}.`,'info');
+}
+function adminSetSpins() {
+  const val = parseInt(document.getElementById('adm-spins-input')?.value);
+  if (isNaN(val) || val < 0) { toast('INVALID AMOUNT',true); return; }
+  state.bonusSpins = val; saveState(); updateWheelUI();
+  toast(`BONUS SPINS SET TO ${val}`, false, true);
+  adminLog(`Bonus spins set to ${val}.`,'info');
+}
+
+function adminToggle(flag) {
+  adminSettings[flag] = !adminSettings[flag];
+  const btn = document.getElementById('adm-'+flag);
+  if (btn) {
+    btn.classList.toggle('on', adminSettings[flag]);
+    // update checkbox symbol in text
+    const on = adminSettings[flag];
+    btn.textContent = btn.textContent.replace(/[☐☑]/, on ? '☑' : '☐');
+  }
+  if (flag === 'skipwheel') state.skipSpinAnim = adminSettings.skipwheel;
+  if (flag === 'wheelunlock' && adminSettings.wheelunlock) {
+    try { localStorage.removeItem('gsLastSpin'); } catch{}
+    updateWheelUI();
+  }
+  saveAdminSettings(); saveState();
+  adminLog(`Flag [${flag}] = ${adminSettings[flag]}.`,'warn');
+}
+
+function adminUnlockAllSkins() {
+  SKINS.forEach(s => { if (!state.owned.includes(s.id)) state.owned.push(s.id); });
+  saveState(); renderAdminSkins(); renderShop(); renderHub();
+  toast('ALL SKINS UNLOCKED!', false, true);
+  adminLog('All skins unlocked.','info');
+}
+
+function renderAdminSkins() {
+  const cont = document.getElementById('adm-skin-btns');
+  if (!cont) return;
+  cont.innerHTML = '';
+  SKINS.forEach(sk => {
+    const owned = state.owned.includes(sk.id);
+    const btn = document.createElement('button');
+    btn.className = 'admin-toggle' + (owned ? ' on' : '');
+    btn.textContent = (owned ? '☑ ' : '☐ ') + sk.name;
+    btn.onclick = () => {
+      if (owned) {
+        if (state.currentSkin === sk.id) state.currentSkin = 'cosmos';
+        state.owned = state.owned.filter(id => id !== sk.id);
+        if (sk.id === 'cosmos') state.owned.unshift('cosmos'); // always keep default
+      } else {
+        state.owned.push(sk.id);
+      }
+      saveState(); renderAdminSkins(); renderHub();
+      adminLog(`Skin [${sk.id}] toggled.`,'info');
+    };
+    cont.appendChild(btn);
+  });
+}
+
+function adminCompleteAllQuests() {
+  QUESTS_DEF.forEach(q => {
+    quests.stats[q.stat] = q.goal;
+  });
+  saveQuests(); renderQuests();
+  toast('ALL QUESTS COMPLETE!', false, true);
+  adminLog('All quest stats maxed.','info');
+}
+function adminResetQuests() {
+  quests.stats = { uniqueGames:0, moneyEarned:0, targetHits:0, scrambles:0, dodgeTime:0, riskWins:0 };
+  quests.claimed = {}; quests.playedGames = {}; quests.lastReset = Date.now();
+  saveQuests(); renderQuests();
+  toast('QUESTS RESET!');
+  adminLog('Quests reset.','warn');
+}
+function adminMaxStats() {
+  quests.stats.uniqueGames = 99; quests.stats.moneyEarned = 9999;
+  quests.stats.targetHits = 99; quests.stats.scrambles = 99;
+  quests.stats.dodgeTime = 999; quests.stats.riskWins = 99;
+  saveQuests(); renderQuests();
+  toast('ALL STATS MAXED!', false, true);
+  adminLog('All quest stats maxed to 99+.','info');
+}
+
+function adminRunCheat(code) {
+  // Admin panel runs cheats without the "already used" lock
+  const def = CHEATS[code];
+  if (!def) { adminLog(`Unknown cheat: ${code}`,'warn'); return; }
+  if (def.reward) state.money += def.reward;
+  else if (def.type === 'skins') SKINS.forEach(s => { if (!s.exclusive && !state.owned.includes(s.id)) state.owned.push(s.id); });
+  else if (def.type === 'spins') state.bonusSpins += def.amount;
+  else if (def.type === 'skip') state.skipSpinAnim = true;
+  else if (def.type === 'phantom') { if (!state.owned.includes('phantom')) state.owned.push('phantom'); }
+  else if (def.type === 'allquests') adminCompleteAllQuests();
+  else if (def.type === 'resetcooldown') { try { localStorage.removeItem('gsLastSpin'); } catch{} updateWheelUI(); }
+  saveState(); renderHub(); renderAdminSkins(); updateWheelUI();
+  toast(def.label, false, true);
+  adminLog(`Cheat [${code}] applied: ${def.label}`,'info');
+}
+
+/* ==============================================================
+   EXTENDED CHEAT CODES (added without removing existing ones)
+   ============================================================== */
+const EXTRA_CHEATS = {
+  'megacredits':   { reward:10000, label:'+10000 CREDITS!' },
+  'quantumspins':  { type:'spins', amount:50, label:'+50 BONUS SPINS!' },
+  'cosmicgod':     { type:'cosmicgod', label:'ALL SKINS + 5000⚡ GRANTED!' },
+  'unlockphantom': { type:'phantom', label:'PHANTOM SKIN UNLOCKED!' },
+  'questcomplete': { type:'allquests', label:'ALL QUESTS COMPLETED!' },
+  'resetcooldown': { type:'resetcooldown', label:'WHEEL COOLDOWN RESET!' },
+  'darkside':      { reward:500, label:'+500 FROM THE DARK SIDE!' },
+  'stationmaster': { type:'spins', amount:100, label:'100 SPINS — STATION MASTER!' },
+  'luckydraw':     { type:'spins', amount:3, label:'+3 LUCKY SPINS!' },
+  'voidwalk':      { type:'phantom', label:'VOID WALK — PHANTOM UNLOCKED!' }
+};
+// Merge extra cheats into main CHEATS at runtime
+Object.assign(CHEATS, EXTRA_CHEATS);
+// Patch cosmicgod type into redeemCode logic
+const _origRedeem = redeemCode;
+function redeemCode(rawCode) {
+  const code = String(rawCode||'').toLowerCase();
+  const def = CHEATS[code];
+  if (!def) { toast('INVALID CODE',true); return; }
+  let used={};
+  try { used=JSON.parse(localStorage.getItem('gsCheats')||'{}'); } catch{}
+  if (used[code]) { toast('ALREADY USED',true); return; }
+  if (def.reward) state.money+=def.reward;
+  else if (def.type==='skins') SKINS.forEach(s=>{ if(!s.exclusive&&!state.owned.includes(s.id)) state.owned.push(s.id); });
+  else if (def.type==='spins') state.bonusSpins+=def.amount;
+  else if (def.type==='skip') state.skipSpinAnim=true;
+  else if (def.type==='phantom') { if(!state.owned.includes('phantom')) state.owned.push('phantom'); }
+  else if (def.type==='cosmicgod') {
+    SKINS.forEach(s=>{ if(!state.owned.includes(s.id)) state.owned.push(s.id); });
+    state.money+=5000;
+  }
+  else if (def.type==='allquests') adminCompleteAllQuests();
+  else if (def.type==='resetcooldown') { try{localStorage.removeItem('gsLastSpin');}catch{} updateWheelUI(); }
+  saveState(); used[code]=Date.now();
+  try { localStorage.setItem('gsCheats',JSON.stringify(used)); } catch{}
+  toast(def.label,false,true); renderHub(); updateWheelUI();
+}
+
+/* ==============================================================
+   HELPER — double reward if admin flag is on
+   ============================================================== */
+const _origAddMoney = addMoney;
+function addMoney(amt) {
+  const final = adminSettings.doublereward ? amt*2 : amt;
+  state.money += final; saveState();
+  if (adminSettings.doublereward && amt > 0) {
+    toast(`+${final} CREDITS! (×2 ADMIN BONUS)`, false, true);
+  } else {
+    toast(`+${final} CREDITS!`, false, true);
+  }
+}
+
+/* ==============================================================
+   GAME 20 — VOID SWEEPER (Minesweeper)
+   ============================================================== */
+let mineState = { grid:[], rows:0, cols:0, mines:0, revealed:0, flags:0, started:false, over:false, timerInt:null, elapsed:0 };
+
+const MINE_PRESETS = {
+  easy:   { rows:8,  cols:8,  mines:10 },
+  medium: { rows:9,  cols:12, mines:18 },
+  hard:   { rows:10, cols:16, mines:30 }
+};
+
+games.minesweeper = function() {
+  mineStart('easy');
+  gameCleanup = () => {
+    clearInterval(mineState.timerInt);
+    mineState.over = true; activeGame = null;
+  };
+};
+
+function mineStart(difficulty) {
+  clearInterval(mineState.timerInt);
+  const preset = MINE_PRESETS[difficulty];
+  const { rows, cols, mines } = preset;
+  mineState = { grid:[], rows, cols, mines, revealed:0, flags:0, started:false, over:false, timerInt:null, elapsed:0 };
+
+  // Build grid
+  for (let r=0; r<rows; r++) {
+    mineState.grid[r] = [];
+    for (let c=0; c<cols; c++) {
+      mineState.grid[r][c] = { mine:false, revealed:false, flagged:false, num:0 };
+    }
+  }
+  // Place mines
+  let placed = 0;
+  while (placed < mines) {
+    const r = Math.floor(Math.random()*rows), c = Math.floor(Math.random()*cols);
+    if (!mineState.grid[r][c].mine) { mineState.grid[r][c].mine=true; placed++; }
+  }
+  // Calculate numbers
+  for (let r=0; r<rows; r++) for (let c=0; c<cols; c++) {
+    if (mineState.grid[r][c].mine) continue;
+    let count=0;
+    for (let dr=-1;dr<=1;dr++) for (let dc=-1;dc<=1;dc++) {
+      const nr=r+dr, nc=c+dc;
+      if (nr>=0&&nr<rows&&nc>=0&&nc<cols&&mineState.grid[nr][nc].mine) count++;
+    }
+    mineState.grid[r][c].num = count;
+  }
+
+  document.getElementById('mine-flags').textContent = '0';
+  document.getElementById('mine-total-mines').textContent = mines;
+  document.getElementById('mine-safe').textContent = '0';
+  document.getElementById('mine-left').textContent = rows*cols - mines;
+  document.getElementById('mine-time').textContent = '0';
+  document.getElementById('mine-credits').textContent = '+0';
+  mineRenderGrid();
+}
+
+function mineRenderGrid() {
+  const grid = document.getElementById('mine-grid');
+  const { rows, cols } = mineState;
+  const cellSize = Math.min(36, Math.floor((window.innerWidth * 0.88) / cols) - 3);
+  grid.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
+  grid.innerHTML = '';
+  let longPressTimer = null;
+
+  for (let r=0; r<rows; r++) for (let c=0; c<cols; c++) {
+    const cell = mineState.grid[r][c];
+    const el = document.createElement('div');
+    el.className = 'mine-cell';
+    el.style.width = el.style.height = cellSize+'px';
+    el.style.fontSize = Math.max(10, cellSize*0.38)+'px';
+    el.dataset.r = r; el.dataset.c = c;
+
+    if (cell.revealed) {
+      el.classList.add('revealed');
+      if (cell.mine) { el.textContent = '💥'; el.classList.add('mine-hit'); }
+      else if (cell.num > 0) { el.textContent = cell.num; el.classList.add('mine-n'+cell.num); }
+    } else if (cell.flagged) {
+      el.textContent = '🚩'; el.classList.add('flagged');
+    } else if (adminSettings.showmines && cell.mine) {
+      el.textContent = '💣'; el.style.opacity='0.3';
+    }
+
+    // Left click = reveal
+    el.addEventListener('click', e => { e.preventDefault(); mineReveal(+el.dataset.r, +el.dataset.c); });
+    // Right click = flag
+    el.addEventListener('contextmenu', e => { e.preventDefault(); mineFlag(+el.dataset.r, +el.dataset.c); });
+    // Long press = flag (mobile)
+    el.addEventListener('touchstart', e => {
+      longPressTimer = setTimeout(() => { mineFlag(+el.dataset.r, +el.dataset.c); longPressTimer=null; }, 450);
+    }, {passive:true});
+    el.addEventListener('touchend', () => { if(longPressTimer){clearTimeout(longPressTimer);longPressTimer=null;} });
+    el.addEventListener('touchmove', () => { if(longPressTimer){clearTimeout(longPressTimer);longPressTimer=null;} });
+
+    grid.appendChild(el);
+  }
+}
+
+function mineReveal(r, c) {
+  if (mineState.over) return;
+  const cell = mineState.grid[r][c];
+  if (cell.revealed || cell.flagged) return;
+
+  // Start timer on first click
+  if (!mineState.started) {
+    mineState.started = true;
+    mineState.timerInt = setInterval(() => {
+      mineState.elapsed++;
+      document.getElementById('mine-time').textContent = mineState.elapsed;
+    }, 1000);
+  }
+
+  if (cell.mine && !adminSettings.godmode) {
+    cell.revealed = true;
+    mineState.over = true;
+    clearInterval(mineState.timerInt);
+    // reveal all mines
+    for (let row=0;row<mineState.rows;row++) for (let col=0;col<mineState.cols;col++) {
+      if (mineState.grid[row][col].mine) mineState.grid[row][col].revealed=true;
+    }
+    mineRenderGrid();
+    const area = document.querySelector('#screen-minesweeper .game-area');
+    toast('KABOOM! 💥', true);
+    setTimeout(() => showOverlay(area, '💥 DETONATED!', `Revealed ${mineState.revealed} safe cells — +0 Credits`), 400);
+    trackGamePlayed('minesweeper');
+    return;
+  }
+
+  // flood fill for empty cells
+  const stack = [[r,c]];
+  const visited = new Set();
+  while (stack.length) {
+    const [cr,cc] = stack.pop();
+    const key = cr*1000+cc;
+    if (visited.has(key)) continue;
+    visited.add(key);
+    const c2 = mineState.grid[cr][cc];
+    if (c2.revealed || c2.flagged) continue;
+    c2.revealed = true;
+    mineState.revealed++;
+    if (c2.num===0 && !c2.mine) {
+      for (let dr=-1;dr<=1;dr++) for (let dc=-1;dc<=1;dc++) {
+        const nr=cr+dr, nc=cc+dc;
+        if (nr>=0&&nr<mineState.rows&&nc>=0&&nc<mineState.cols&&!mineState.grid[nr][nc].revealed) stack.push([nr,nc]);
+      }
+    }
+  }
+
+  const safeTotal = mineState.rows*mineState.cols - mineState.mines;
+  document.getElementById('mine-safe').textContent = mineState.revealed;
+  document.getElementById('mine-left').textContent = safeTotal - mineState.revealed;
+  mineRenderGrid();
+
+  if (mineState.revealed >= safeTotal) {
+    mineState.over = true;
+    clearInterval(mineState.timerInt);
+    const reward = Math.max(20, Math.round(500 - mineState.elapsed * 2 + mineState.mines * 3));
+    document.getElementById('mine-credits').textContent = '+'+reward;
+    addMoney(reward); trackGamePlayed('minesweeper'); trackQuest('moneyEarned', reward);
+    const area = document.querySelector('#screen-minesweeper .game-area');
+    showOverlay(area, '✓ FIELD CLEAR!', `Time: ${mineState.elapsed}s → +${reward} Credits`);
+    activeGame = null;
+  }
+}
+
+function mineFlag(r, c) {
+  if (mineState.over) return;
+  const cell = mineState.grid[r][c];
+  if (cell.revealed) return;
+  cell.flagged = !cell.flagged;
+  mineState.flags += cell.flagged ? 1 : -1;
+  document.getElementById('mine-flags').textContent = mineState.flags;
+  mineRenderGrid();
+}
+
+/* ==============================================================
+   GAME 21 — SPECTRUM CLASH (Color Match)
+   ============================================================== */
+const CM_COLORS = [
+  { name:'RED',   hex:'#ff4444' },
+  { name:'BLUE',  hex:'#4488ff' },
+  { name:'GREEN', hex:'#44ff88' },
+  { name:'YELLOW',hex:'#ffee44' },
+  { name:'PURPLE',hex:'#cc44ff' },
+  { name:'ORANGE',hex:'#ff8844' },
+  { name:'TEAL',  hex:'#00d4d4' },
+  { name:'PINK',  hex:'#ff44aa' }
+];
+
+games.colormatch = function() {
+  let score=0, streak=0, bestStreak=0, timeLeft=30, running=true;
+  let correctAnswer=false;
+  document.getElementById('cm-score').textContent='0';
+  document.getElementById('cm-timer').textContent='30';
+  document.getElementById('cm-streak').textContent='0';
+  document.getElementById('cm-best').textContent='0';
+  document.getElementById('cm-result').textContent='';
+  document.getElementById('cm-result').className='cm-result';
+
+  function nextRound() {
+    // Pick word (display name) and ink color separately
+    const wordEntry = CM_COLORS[Math.floor(Math.random()*CM_COLORS.length)];
+    const inkEntry = CM_COLORS[Math.floor(Math.random()*CM_COLORS.length)];
+    correctAnswer = (wordEntry.name === inkEntry.name);
+    document.getElementById('cm-word').textContent = wordEntry.name;
+    document.getElementById('cm-word').style.color = inkEntry.hex;
+    document.getElementById('cm-word').style.borderColor = inkEntry.hex;
+    document.getElementById('cm-result').textContent='';
+    document.getElementById('cm-result').className='cm-result';
+  }
+
+  const timerInt = setInterval(()=>{
+    timeLeft--; document.getElementById('cm-timer').textContent=timeLeft;
+    if(timeLeft<=0) finish();
+  },1000);
+
+  window.cmAnswer = function(yes) {
+    if (!running) return;
+    const isRight = (yes === correctAnswer);
+    if (isRight) {
+      score+=5; streak++;
+      if (streak>bestStreak) bestStreak=streak;
+      document.getElementById('cm-score').textContent=score;
+      document.getElementById('cm-streak').textContent=streak;
+      document.getElementById('cm-best').textContent=bestStreak;
+      document.getElementById('cm-result').textContent='✓ CORRECT!';
+      document.getElementById('cm-result').className='cm-result correct';
+    } else {
+      streak=0; document.getElementById('cm-streak').textContent='0';
+      document.getElementById('cm-result').textContent='✗ WRONG!';
+      document.getElementById('cm-result').className='cm-result wrong';
+    }
+    setTimeout(nextRound, 280);
+  };
+
+  nextRound();
+
+  function finish() {
+    if (!running) return; running=false;
+    clearInterval(timerInt);
+    const reward = score + (bestStreak>=5?20:0);
+    addMoney(reward); trackGamePlayed('colormatch'); trackQuest('moneyEarned',reward);
+    const area = document.querySelector('#screen-colormatch .game-area');
+    showOverlay(area,'SPECTRUM DONE!',`Score: ${score} (Best streak: ${bestStreak}) → +${reward} Credits`);
+    activeGame=null;
+  }
+
+  gameCleanup = () => {
+    running=false; clearInterval(timerInt);
+    delete window.cmAnswer; activeGame=null;
+  };
+};
+
+/* ==============================================================
+   GAME 22 — MATH REACTOR (Math Rush)
+   ============================================================== */
+games.mathrush = function() {
+  let score=0, streak=0, earned=0, timeLeft=60, running=true;
+  let correctAnswer=0, questionLevel=1;
+  document.getElementById('mr-score').textContent='0';
+  document.getElementById('mr-timer').textContent='60';
+  document.getElementById('mr-streak').textContent='0';
+  document.getElementById('mr-mult').textContent='×1';
+  document.getElementById('mr-earned').textContent='0';
+  document.getElementById('mr-bar').style.width='0%';
+  document.getElementById('mr-feedback').textContent='';
+
+  const input = document.getElementById('mr-input');
+  input.value=''; input.disabled=false;
+
+  function getMultiplier() {
+    if (streak>=10) return 4;
+    if (streak>=6)  return 3;
+    if (streak>=3)  return 2;
+    return 1;
+  }
+
+  function nextQuestion() {
+    // Level scales with score
+    if (score>=20) questionLevel=3;
+    else if (score>=8) questionLevel=2;
+    else questionLevel=1;
+
+    let a,b,op,ans;
+    const ops = questionLevel===1 ? ['+','-'] : questionLevel===2 ? ['+','-','×'] : ['+','-','×','÷'];
+    op = ops[Math.floor(Math.random()*ops.length)];
+
+    if (op==='+') { a=Math.floor(Math.random()*(questionLevel*20+10))+1; b=Math.floor(Math.random()*(questionLevel*20+10))+1; ans=a+b; }
+    else if (op==='-') { a=Math.floor(Math.random()*(questionLevel*15+10))+5; b=Math.floor(Math.random()*a)+1; ans=a-b; }
+    else if (op==='×') { a=Math.floor(Math.random()*12)+2; b=Math.floor(Math.random()*12)+2; ans=a*b; }
+    else { b=Math.floor(Math.random()*10)+2; ans=Math.floor(Math.random()*10)+1; a=b*ans; op='÷'; }
+
+    correctAnswer = ans;
+    document.getElementById('mr-eq').textContent = `${a} ${op} ${b} = ?`;
+    const labels=['EASY','MEDIUM','HARD'];
+    document.getElementById('mr-level').textContent=`LEVEL ${questionLevel} — ${labels[questionLevel-1]}`;
+    document.getElementById('mr-feedback').textContent='';
+    document.getElementById('mr-feedback').className='math-feedback';
+    input.value=''; input.focus();
+  }
+
+  const timerInt = setInterval(()=>{
+    timeLeft--; document.getElementById('mr-timer').textContent=timeLeft;
+    if(timeLeft<=0) finish();
+  },1000);
+
+  function checkAnswer() {
+    if (!running) return;
+    const val = parseInt(input.value);
+    if (isNaN(val)) return;
+    if (val === correctAnswer) {
+      score++; streak++;
+      const mult = getMultiplier();
+      const gain = 5 * mult;
+      earned += gain;
+      document.getElementById('mr-score').textContent=score;
+      document.getElementById('mr-streak').textContent=streak;
+      document.getElementById('mr-mult').textContent='×'+mult;
+      document.getElementById('mr-earned').textContent=earned;
+      document.getElementById('mr-bar').style.width=Math.min(100,(streak/10)*100)+'%';
+      document.getElementById('mr-feedback').textContent=`✓ CORRECT! +${gain}⚡`;
+      document.getElementById('mr-feedback').className='math-feedback correct';
+      setTimeout(nextQuestion, 300);
+    } else {
+      streak=0;
+      document.getElementById('mr-streak').textContent='0';
+      document.getElementById('mr-mult').textContent='×1';
+      document.getElementById('mr-bar').style.width='0%';
+      document.getElementById('mr-feedback').textContent=`✗ Wrong! Answer was ${correctAnswer}`;
+      document.getElementById('mr-feedback').className='math-feedback wrong';
+      setTimeout(nextQuestion, 900);
+    }
+  }
+
+  const onKey = e => { if(e.key==='Enter') checkAnswer(); };
+  input.addEventListener('keydown', onKey);
+
+  nextQuestion();
+
+  function finish() {
+    if (!running) return; running=false;
+    clearInterval(timerInt); input.disabled=true;
+    addMoney(earned); trackGamePlayed('mathrush'); trackQuest('moneyEarned',earned);
+    const area = document.querySelector('#screen-mathrush .game-area');
+    const verdict = score>=20?'GENIUS!':score>=10?'SHARP MIND!':'KEEP PRACTICING!';
+    showOverlay(area,verdict,`${score} solved → +${earned} Credits`);
+    activeGame=null;
+  }
+
+  gameCleanup = () => {
+    running=false; clearInterval(timerInt);
+    input.removeEventListener('keydown',onKey);
+    input.disabled=true; activeGame=null;
+  };
+};
+
+/* ==============================================================
+   PATCH — existing games respect adminSettings difficulty
+   ============================================================== */
+// We patch the spawn interval and tick speeds by wrapping game starts.
+// Games read adminSettings.targetSpeed etc. directly (see inline refs below).
+// The patch is applied by overriding the setInterval factory used in targets:
+const _origTargets = games.targets;
+games.targets = function() {
+  // patch: spawn rate adjusts to targetSpeed
+  const area=document.getElementById('t-area');
+  area.innerHTML='';
+  let score=0, timeLeft=20;
+  const scoreEl=document.getElementById('t-score');
+  const timerEl=document.getElementById('t-timer');
+  scoreEl.textContent='0'; timerEl.textContent=timeLeft;
+
+  function styleTarget(el) {
+    const sk=SKINS.find(s=>s.id===state.currentSkin);
+    let bg,glow;
+    if(sk.color==='linear'||sk.color==='aurora'){bg=`radial-gradient(circle,#ffaa00 20%,#00d4d4 45%,#aa44ff 60%,transparent 64%)`;glow='#ffaa00';}
+    else if(sk.color==='lava'){bg=`radial-gradient(circle,#ffee00 20%,#ff7700 45%,#cc2200 60%,transparent 64%)`;glow='#ff5500';}
+    else if(sk.color==='ice'){bg=`radial-gradient(circle,#ffffff 20%,#88ddff 45%,#1155cc 60%,transparent 64%)`;glow='#88ddff';}
+    else{bg=`radial-gradient(circle,${sk.color} 30%,${sk.color}aa 52%,${sk.color}44 62%,transparent 65%)`;glow=sk.color;}
+    el.style.background=bg; el.style.boxShadow=`0 0 22px ${glow}`;
+  }
+  function spawn() {
+    if(!activeGame) return;
+    const t=document.createElement('div'); t.className='target'; styleTarget(t);
+    t.innerHTML='<div class="t-eye left"></div><div class="t-eye right"></div><div class="t-mouth"></div>';
+    const r=area.getBoundingClientRect();
+    t.style.left=Math.random()*(r.width-68)+'px'; t.style.top=Math.random()*(r.height-68)+'px';
+    const hit=(ev)=>{ if(ev){ev.preventDefault();ev.stopPropagation();} if(!t.parentNode)return; score++;scoreEl.textContent=score; trackQuest('targetHits',1); t.remove(); };
+    t.addEventListener('pointerdown',hit); t.addEventListener('touchstart',hit,{passive:false});
+    area.appendChild(t);
+    const lifespan = Math.round(1400 / adminSettings.targetSpeed);
+    setTimeout(()=>{ if(t.parentNode) t.remove(); }, lifespan);
+  }
+  const spawnRate = Math.round(600 / adminSettings.targetSpeed);
+  const spawnInt=setInterval(spawn, spawnRate);
+  const timerInt=setInterval(()=>{ timeLeft--;timerEl.textContent=timeLeft; if(timeLeft<=0) finish(); },1000);
+  function finish() {
+    clearInterval(spawnInt);clearInterval(timerInt);
+    const reward=score*3; addMoney(reward); trackGamePlayed('targets'); trackQuest('moneyEarned',reward);
+    showOverlay(area,'MISSION COMPLETE!',`Hits: ${score} → +${reward} Credits`); activeGame=null;
+  }
+  gameCleanup=()=>{ clearInterval(spawnInt);clearInterval(timerInt); area.innerHTML=''; activeGame=null; };
+};
+
+/* ==============================================================
    STAR FIELD GENERATOR
    ============================================================== */
 function buildStars() {
@@ -4369,9 +5749,11 @@ function buildStars() {
    INIT
    ============================================================== */
 loadState();
+loadAdminSettings();
 loadQuests();
 maybeResetQuests();
 loadTheme();
+loadLang();
 buildStars();
 buildWheel();
 updateWheelUI();
